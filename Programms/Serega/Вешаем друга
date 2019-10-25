@@ -1,0 +1,52 @@
+#include <iostream>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+setlocale(LC_ALL, "rus");
+
+char a[100];char b[100];int cb = 0;int WIN = 0;char buk;int HP = 5;int Damage = 1;int md = 0;int sh = -1;char r;
+
+
+for (int i = 0;i < 100;i++) {
+	b[i] = ' ';
+	a[i] = ' ';
+}
+cout << "Описание игры: ваш друг загадывает слово, вы должны по буквам отгадать его у вас есть 7 прав на ошибку. \n";
+cout << "Правило для загадавшего слово человека: играем без цифр и символов\n";
+cout << "Правило для отгадывающего слово человека: не повторять одну и туже букву\n";
+cout << "GL,HF\n";
+cin.ignore();
+cout << "Введите слово на конце введите *\n";
+while (a[sh]!='*') {
+	if (sh >= 0) {
+		b[sh] = '-';
+	}
+	sh += 1;
+	cb += 1;
+	cin >> a[sh];
+	
+}
+sh = 0;
+while ( (HP != 0) && (WIN != cb)) {
+		cout << "Введите букву\n";
+		while (b[sh] != ' ') { cout << b[sh];sh += 1; }
+		sh = 0;
+		cout << endl;
+		cin >> buk;
+		while (b[sh] != ' ') {
+			if (buk == a[sh]) { b[sh] = buk; WIN += 1; }
+			else { md += 1; }
+			if (md == cb) { HP -= Damage;md = 0; }
+			sh += 1;
+		}
+		
+		sh = 0;
+}
+if (WIN == cb) { cout << "You WIN"; }
+if (HP == 0) { cout << "You LOSE"; }
+
+
+}
