@@ -1,0 +1,56 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "rus");
+	int a, g = 0;int kx[2];int ky[2]; //cc[0 и 1] это x0 x1 cc[2 и 3]это  y0 y1
+	string q[6];
+	q[0] = "Король";
+	q[1] = "Ферзь";
+	q[2] = "Ладья";
+	q[3] = "Слон";
+	q[4] = "Конь";
+	q[5] = "Пешка";
+	cout << "Введите номер фигуры: 0.Король, 1. Ферзь, 2. Ладья, 3. Слон, 4.Конь, 5. Пешка"<<endl;
+	cin>> a;
+	cout <<"Ваша фигура: "<<q[a] <<endl << "Введите координаты вашей фигуры по x, y и куда хотите ей походить так же по x,y:";
+
+	while (g != 1) {
+		cout << endl;
+		cin >> kx[0] >> ky[0];
+		cout << endl;
+		cin >> kx[1] >> ky[1];
+		if (((kx[0] || ky[1]) > 8) || ((kx[0] || ky[1]) < 1))
+		{
+			cout << "Ошибка координат\n";
+		}
+		else { g = 1; }
+	}
+	
+	switch (a) {
+	case 0: if ((abs(kx[0] - kx[1]) < 2) && (abs(ky[0] - ky[1]) < 2))
+	{cout << "YES" << endl;}
+		  else
+	{	cout << "NO" << endl;}; break;
+	case 1: if (((abs(ky[0] - ky[1]) - abs(kx[0] - kx[1])) == 0) || (ky[0] == ky[1]) || (kx[0] == kx[1]))
+	{cout << "YES" << endl;}
+		  else
+	{cout << "NO" << endl;}; break;
+	case 2: if ((ky[0] == ky[1]) || (kx[0] == kx[1])) 
+	{ cout << "YES" << endl; }
+		  else	
+				{ cout << "NO" << endl; } break;
+	case 3: if ((abs(ky[0] - ky[1]) - abs(kx[0] - kx[1])) == 0)
+	{		cout << "YES" << endl;}
+		  else
+	{	cout << "NO" << endl;}; break;
+	case 4: if (((abs(ky[0] - ky[1]) == 2) && (abs(kx[0] - kx[1]) == 1)) || ((abs(ky[0] - ky[1]) == 1) && (abs(kx[0] - kx[1]) == 2)))
+	{ cout << "YES" << endl; }
+		  else 
+				{ cout << "NO" << endl; }; break;
+	case 5: if ((kx[0] == kx[1]) && ((ky[0] - ky[1]) == 1)) 
+	{ cout << "YES" << endl; }
+		  else 
+				{ cout << "NO" << endl; }; break;
+	}
+}
